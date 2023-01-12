@@ -108,11 +108,13 @@ entrada_conversation = ConversationHandler(
 Essa parte e para lidar com a conversa de envio de conteudo com o professor
 """
 
-def cadastrar_conteudo(update,context):
-    update.message.reply_text("Para cadastrar o seu conteudo faça uma copia da planilha abaixo, depois a preencha.")
-    update.message.reply_text("Tome cuidado não inclua nem exclua alguma coluna e nem altere seu nome.")
-    update.message.reply_text("https://1drv.ms/x/s!AkMmeo5LMub_aWBf1UGvt0X_hTs?e=t3JAMj")
-    update.message.reply_text("Apos preenche-la envie no chat e digite /enviar_planilha")
+async def cadastrar_conteudo(update,context) -> int:
+    await update.message.reply_text("Para cadastrar o seu conteudo faça uma copia da planilha abaixo, depois a preencha.")
+    await update.message.reply_text("Tome cuidado não inclua nem exclua alguma coluna e nem altere seu nome.")
+    await update.message.reply_text("https://1drv.ms/x/s!AkMmeo5LMub_aWBf1UGvt0X_hTs?e=t3JAMj")
+    await update.message.reply_text("Apos preenche-la digite /enviar_planilha")
+
+    return ConversationHandler.END
 
 PLANILHA = range(4)
 
