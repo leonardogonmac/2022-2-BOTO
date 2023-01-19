@@ -1,14 +1,9 @@
-from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, Update
-from telegram.ext import (
-    Application,
-    CommandHandler,
-    ContextTypes,
-    ConversationHandler,
-    MessageHandler,
-    filters,
-)
+from telegram import ReplyKeyboardRemove, Update
+from telegram.ext import *
 import logging
 import emoji
+from cadastro_conteudo import enviar_planilha, recebe_planilha
+from conexaoDataBase.enviar_conteudos import enviar_planilha_banco
 
 # Enable logging
 logging.basicConfig(
@@ -107,36 +102,20 @@ entrada_conversation = ConversationHandler(
 """
 Essa parte e para lidar com a conversa de envio de conteudo com o professor
 """
-
 async def cadastrar_conteudo(update,context) -> int:
     await update.message.reply_text("Para cadastrar o seu conteudo faça uma copia da planilha abaixo, depois a preencha.")
     await update.message.reply_text("Tome cuidado não inclua nem exclua alguma coluna e nem altere seu nome.")
-    await update.message.reply_text("https://1drv.ms/x/s!AkMmeo5LMub_aWBf1UGvt0X_hTs?e=t3JAMj")
+    await update.message.reply_text("https://1drv.ms/x/s!AkMmeo5LMub_aWBf1UGvt0X_hTs?e=DN43OT")
     await update.message.reply_text("Apos preenche-la digite /enviar_planilha")
 
     return ConversationHandler.END
 
-PLANILHA = range(4)
-
-async def enviar_planilha (update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("Envie a planilha:")
-
-    return PLANILHA
-
-async def recebe_planilha (update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("Recebido!")
-
-    user = update.message.from_user
-    logger.info("Planilha de %s: %s", user.first_name, update.message.text)
-    print(logger.info)
-
-    return ConversationHandler.END
-
+PLANILHA, ENVIA = range(2)
 
 enviar_planilha_conversation = ConversationHandler(
     entry_points=[CommandHandler("enviar_planilha", enviar_planilha)],
     states={
-        PLANILHA: [MessageHandler(filters.TEXT, recebe_planilha)],
+        PLANILHA: [MessageHandler(filters.Document.ALL, recebe_planilha)],
     },
     fallbacks=[CommandHandler("cancel", cancel)],
 )

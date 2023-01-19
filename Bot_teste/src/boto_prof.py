@@ -15,7 +15,6 @@ def main():
 
     TOKEN = "5840991803:AAGxIhCYY3dNqpQglvaxkdLZp0zMAwKlpZk"
 
-
     dp =  Application.builder().token(TOKEN).build()
 
     dp.add_handler(CommandHandler("help", handlers_prof.help_command))
