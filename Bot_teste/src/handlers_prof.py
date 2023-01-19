@@ -3,7 +3,7 @@ from telegram.ext import *
 import logging
 import emoji
 from cadastro_conteudo import enviar_planilha, recebe_planilha
-from conexaoDataBase.enviar_conteudos import enviar_planilha_banco
+from conexaoDataBase.prof_plano_ensino import colocar_plano
 
 # Enable logging
 logging.basicConfig(
@@ -24,11 +24,8 @@ def help_command(update, context):
     update.message.reply_text("Eu posso te ajudar a enviar e acessar conteúdos e materiais.\n "
                               "Você pode utilizar os seguintes comandos:\n"
                               "\n"
-                              "/novo_conteudo - envia um link de um novo conteúdo para a base de dados;\n"
-                              "/acessar_conteudo - acessa um conteúdo existente na base de dados;\n"
-                              "/deletar_conteudo - apaga um conteudo na base de dados;\n"
-                              "/editar_conteudo - altera um conteudo existente na base de dados.\n"
-                              "/contatosProfessor - exibe formas de entrar em contato com o professor.")
+                              "/cadastrar_conteudo - Para cadastrar o conteudo da sua materia;\n"
+                              "/enviar_plano_de_ensino - Para enviar seu plano de ensino;\n")
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Cancels and ends the conversation."""
@@ -42,11 +39,28 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 Essa parte e para lidar o envio de plano de ensino
 """
 
-# isso esta com algum erro, mas depois sera alterado entao nao vou resolver ou excluir agora
-def plano_de_ensino(update, context):
-    update.message.reply_text("https://drive.google.com/file/d/1PqsmJ7QVNAPDuodKE5TQriUnKYLzisqp/view?usp=share_link")
+PLANO = range(4)
+
+async def enviar_plano_de_ensino (update, context) -> int:
+    await update.message.reply_text("Envie um LINK DRIVE com seu plano de ensino:")
+
+    return PLANO
+
+async def recebe_plano(update, context) -> int:
+    link_plano = update.message.text
+    await colocar_plano(link_plano)
+    await update.message.reply_text("Recebido " + emoji.emojize(':winking_face:'))
 
 
+    return ConversationHandler.END
+
+enviar_plano_conversation = ConversationHandler(
+    entry_points=[CommandHandler("enviar_plano_de_ensino", enviar_plano_de_ensino)],
+    states={
+        PLANO: [MessageHandler(filters.TEXT, recebe_plano)],
+    },
+    fallbacks=[CommandHandler("cancel", cancel)],
+)
 """
 Essa parte e para lidar com a entrada do professor
 """
@@ -75,7 +89,7 @@ async def professorEntrada(update,context)-> int:
                     "Código": user_code}
             print(info)
             await update.message.reply_text(
-                "Bem vindo, Professora " + user_info.from_user.first_name + "!\n\nEsses são seus comandos:\n/informacoesAlunos\n/estatisticasAluno\n/enviarMensagem.")
+                "Bem vindo, Professora " + user_info.from_user.first_name + "!\n\nEsses são seus comandos:\n/enviar_plano_de_ensino\n/enviar_conteudo\n")
 
         else:
             await context.bot.send_message(chat_id=update.effective_chat.id, text = "Código, incorreto. Tente novamente.\nDigite /start para entrar como aluno ou /professorEntrada e seu código. \nExemplo: '/professorEntrada 123456'",

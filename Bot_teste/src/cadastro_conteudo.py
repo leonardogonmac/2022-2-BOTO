@@ -2,6 +2,7 @@ from telegram import Update
 from telegram.ext import *
 import logging
 from conexaoDataBase.enviar_conteudos import enviar_planilha_banco
+import emoji
 
 # Enable logging
 logging.basicConfig(
@@ -22,6 +23,6 @@ async def recebe_planilha (update: Update, context: ContextTypes.DEFAULT_TYPE) -
 
     await enviar_planilha_banco()
 
-    await update.message.reply_text("Deu Bão!.")
+    await update.message.reply_text("Tudo certo. " + emoji.emojize(':winking_face:'))
 
     return ConversationHandler.END
