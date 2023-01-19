@@ -13,7 +13,7 @@ import handlers_prof
 
 def main():
 
-    TOKEN = "5956872551:AAFIafHdQR08vlx5d4B9PnjCxXlpUXEU3oo"
+    TOKEN = ""
 
 
     dp =  Application.builder().token(TOKEN).build()
