@@ -4,8 +4,8 @@ from telethon import TelegramClient
 from telethon.sessions import StringSession
 
 
-api_id = "22480539"
-api_hash = "e0360692292b271db0bbb4451af9d419"
+api_id = 27900352
+api_hash = "40733d5c93fdb98ef3958af5c71d4663"
 
 
 with TelegramClient(StringSession(), api_id, api_hash) as client:

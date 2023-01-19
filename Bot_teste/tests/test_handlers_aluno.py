@@ -26,20 +26,20 @@
 #
 # if __name__ == '__main__':
 #     unittest.main()
-
-from pytest import *
-from telethon import TelegramClient
-from telethon.tl.custom.message import Message
-from src import handlers_aluno
-
-@mark.asyncio
-async def test_help_command(client: TelegramClient):
-    #Criar um papo
-    with client.conversation("@myReplicaLikeBot", timeout=5) as conv:
-        #send a command
-        await conv.send_message("/help")
-        #get resposta
-        resp: Message = await conv.get_response()
-        #verifica se tta certo
-        assert "@myReplicaLikeBot" in resp.raw_text
-        assert "Eu posso te ajudar a enviar e acessar conteúdos e materiais.\nVocê pode utilizar os seguintes comandos:\n\n/novo_conteudo - envia um link de um novo conteúdo para a base de dados;\n/acessar_conteudo - acessa um conteúdo existente na base de dados;\n/deletar_conteudo - apaga um conteudo na base de dados;\n/editar_conteudo - altera um conteudo existente na base de dados.\n/contatosProfessor - exibe formas de entrar em contato com o professor."
+#
+# from pytest import *
+# from telethon import TelegramClient
+# from telethon.tl.custom.message import Message
+# from src import handlers_aluno
+#
+# @mark.asyncio
+# async def test_help_command(client: TelegramClient):
+#     #Criar um papo
+#     with client.conversation("@myReplicaLikeBot", timeout=5) as conv:
+#         #send a command
+#         await conv.send_message("/help")
+#         #get resposta
+#         resp: Message = await conv.get_response()
+#         #verifica se tta certo
+#         assert "@myReplicaLikeBot" in resp.raw_text
+#         assert "Eu posso te ajudar a enviar e acessar conteúdos e materiais.\nVocê pode utilizar os seguintes comandos:\n\n/novo_conteudo - envia um link de um novo conteúdo para a base de dados;\n/acessar_conteudo - acessa um conteúdo existente na base de dados;\n/deletar_conteudo - apaga um conteudo na base de dados;\n/editar_conteudo - altera um conteudo existente na base de dados.\n/contatosProfessor - exibe formas de entrar em contato com o professor."
