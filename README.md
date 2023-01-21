@@ -30,12 +30,12 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 * Abra o projeto e no terminal digite:
 ``````
     $ pip install python-telegram-bot --upgrade
-``````
-   
-* Depois: 
-``````      
     $ pip install emoji
-``````    
+    $ pip install pandas
+    $ pip install openpyxl
+    $ pip install mysql-connector-python
+    $ pip install pymysql
+``````
   
 ### Utilização
 - Consiga um Token em [BotFather](https://telegram.me/BotFather)
