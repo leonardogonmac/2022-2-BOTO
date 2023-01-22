@@ -1,6 +1,6 @@
 from mysql.connector import ProgrammingError
 import pandas as pd
-from Bot_teste.src.conexaoDataBase.db.databaseBOTO import nova_con
+from src.conexaoDataBase.databaseBOTO import nova_con
 async def enviar_planilha_banco() ->int:
 
     tabela = pd.read_excel("./conexaoDataBase/PlanilhasPreenchidas/planilha_preenchida.xlsx")

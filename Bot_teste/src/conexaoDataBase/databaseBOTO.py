@@ -5,7 +5,7 @@ parametros = dict(
     host='localhost',
     port=3306,
     user='username',     ## usar nome do seu usuario
-    password='Beavn/02', ## usar senha do seu DB
+    password='',         ## usar senha do seu DB
     database='BOT'
 )
 @contextmanager

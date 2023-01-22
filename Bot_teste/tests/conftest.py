@@ -1,6 +1,5 @@
 import asyncio
 import threading
-from src.handlers_prof import *
 import pytest
 from telethon import TelegramClient
 from telethon.sessions import StringSession
@@ -8,9 +7,9 @@ from helpers import wait
 from telethon.tl.custom.conversation import Conversation
 from telethon.tl.custom.message import Message
 
-api_id = "digite a chave api_id"
-api_hash = "digite a api_hash"
-session_str = "digite a session_string"
+api_id = ""
+api_hash = ""
+session_str = ""
 @pytest.fixture(scope="session")
 async def conv():
     client = TelegramClient(
@@ -41,3 +40,12 @@ async def test_start(conv):
     resposta_start = ("Olá, professor digite código")
     # Check that the message contains necessary text
     assert resposta_start in mensagem.text
+
+@pytest.mark.anyio
+async def test_password(conv):
+    """Test password verification"""
+    await conv.send_message("p123")
+    mensagem: Message = await conv.get_response()
+    resposta_pword = ("Bem vindo, Professora Leonardo!\n\nEsses são seus comandos:\n/enviar_plano_de_ensino\n/enviar_conteudo")
+    # Check that the message contains necessary text
+    assert resposta_pword in mensagem.text
