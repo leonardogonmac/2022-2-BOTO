@@ -1,26 +1,22 @@
 from telegram.ext import *
 import handlers_aluno
 
-print("Bot started. . .\n")
+def main():
 
-TOKEN = ""
+    TOKEN = "5840991803:AAGxIhCYY3dNqpQglvaxkdLZp0zMAwKlpZk"
 
-updater = Updater(token=TOKEN)
-dp = updater.dispatcher
+    dp = Application.builder().token(TOKEN).build()
 
-dp.add_handler(CommandHandler("start", handlers_aluno.start))
-dp.add_handler(CommandHandler("help", handlers_aluno.help_command))
+    dp.add_handler(CommandHandler("contatos_Professor", handlers_aluno.contatos_Professor))
+    dp.add_handler(CommandHandler("help", handlers_aluno.help_command))
+    dp.add_handler(CommandHandler("conteudo", handlers_aluno.conteudo))
 
-dp.add_handler(CommandHandler("novo_conteudo", handlers_aluno.not_finished))
-dp.add_handler(CommandHandler("acessar_conteudo", handlers_aluno.not_finished))
-dp.add_handler(CommandHandler("deletar_conteudo", handlers_aluno.not_finished))
-dp.add_handler(CommandHandler("editar_conteudo", handlers_aluno.not_finished))
+    dp.add_handler(handlers_aluno.entrada_conversation)
 
-dp.add_handler(CommandHandler("matricula", handlers_aluno.alunoEntrada))
-dp.add_handler(CommandHandler("contatosProfessor", handlers_aluno.contatosProfessor))
-dp.add_handler(CommandHandler("plano_de_ensino", handlers_aluno.plano_de_ensino))
+    print("Bot started. . .\n")
+    dp.run_polling()
+    print("Bot finished. . .\n")
 
-dp.add_handler(MessageHandler(Filters.text, handlers_aluno.handle_message))
 
-updater.start_polling(4)
-updater.idle()
+if __name__ == "__main__":
+    main()

@@ -1,56 +1,22 @@
-from telegram import *
+from telegram import ReplyKeyboardRemove, Update
+from telegram.ext import *
+from uteis import *
+from conexaoDataBase.cadastro_aluno import *
+import logging
 import emoji
 
-## comandos iniciais
+# Enable logging
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+logger = logging.getLogger(__name__)
 
-def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id,
-                             text= "Olá, seja bem vindo ao Boto! \nPrimeiro gostariamos de algumas informações.\n\nPara ter acesso a todos os comandos digite /help.",
-                             reply_markup=ReplyKeyboardRemove())
+"""
+Essa parte e para lidar com a comandos extras
+"""
+async def help_command(update, context) -> int:
 
-##Lidando com a escolha do start
-def handle_message(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text= "Olá, Aluno!\n Para continuar digite, /matricula e sua matricula.\n 'Exemplo: /matricula 210000000'", reply_markup=ReplyKeyboardRemove())
-
-def alunoEntrada(update, context):
-    try:
-        ## Pegando a matricula do aluno
-        user_message = update.message.text
-        user_message = user_message.split(" ")
-        user_matricula = user_message[1]
-
-        ## Verificando se a matrícula tem 9 dígitos
-        if len(user_matricula) == 9:
-            #Descobrindo informaçôes do usuario atraves da conta dele no telegram
-            user_info = update.message
-            info = {"First_Name": user_info.from_user.first_name, "Last_Name": user_info.from_user.last_name,
-                    "Matrícula": user_matricula}
-            print(info)
-            update.message.reply_text(
-                "Bem vindo, "+user_info.from_user.first_name+"!.\nEsses são seus comandos:\n\n/acessarConteudos\n/contatosProfessor\n/planoDeEnsino")
-        else:
-            print("deu errado :( ")
-            context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="Matricula, inválida. Tente novamente\n OBS: sua matricula deve ter 9 digitos.",
-                             reply_markup=ReplyKeyboardRemove())
-    except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text=f"Erro. Tente novamente. \nException: {e}",
-                                 reply_markup=ReplyKeyboardRemove())
-
-def contatosProfessor(update, context):
-    update.message.reply_text("Estes são os contatos da sua professora:\n\n"
-                              "E-mail: carla@boto.com\n"
-                              "Telegram: @profa_carla\n" + emoji.emojize(':house:') + " Sala S8, 35 14h-16h")
-
-## comando para quando alguma funcao nao esta pronta
-def not_finished(update, context):
-    update.message.reply_text("Ainda estamos trabalhando nesse comando." + emoji.emojize(':hammer_and_wrench:'))
-
-##menu de comandos
-def help_command(update, context):
-
-    update.message.reply_text("Eu posso te ajudar a enviar e acessar conteúdos e materiais.\n "
+    await update.message.reply_text("Eu posso te ajudar a enviar e acessar conteúdos e materiais.\n "
                               "Você pode utilizar os seguintes comandos:\n"
                               "\n"
                               "/novo_conteudo - envia um link de um novo conteúdo para a base de dados;\n"
@@ -59,8 +25,113 @@ def help_command(update, context):
                               "/editar_conteudo - altera um conteudo existente na base de dados.\n"
                               "/contatosProfessor - exibe formas de entrar em contato com o professor.")
 
-def plano_de_ensino(update, context):
-    update.message.reply_text("https://drive.google.com/file/d/1PqsmJ7QVNAPDuodKE5TQriUnKYLzisqp/view?usp=share_link")
+async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Cancels and ends the conversation."""
+    await update.message.reply_text(
+        "Conversa encerrada.", reply_markup=ReplyKeyboardRemove()
+    )
+
+    return ConversationHandler.END
+
+"""
+Essa parte e para lidar com a entrada do aluno
+"""
+
+ENTRADA, PROFESSOR = range(2)
+
+async def start(update, context) -> int:
+    await update.message.reply_text("Olá, aluno digite sua matricula:")
+
+    return  ENTRADA
+
+async def alunoEntrada(update, context)->int:
+    try:
+        matricula = update.message.text
+
+        tem_9_digitos = await verificar_se_matricula_tem_9_dig(update,context,matricula)
+        if not tem_9_digitos:
+            return ENTRADA
+        else:
+            print("chegou auqi")
+            tem_no_banco = await coloca_aluno_no_banco(matricula)
+            if tem_no_banco:
+                user_info = update.message
+                await update.message.reply_text("Bem vindo, " + user_info.from_user.first_name +
+                                                "!.\nEsses são seus comandos:\n\n/contatos_Professor\n/plano_de_ensino")
+                await update.message.reply_text("Para receber seu conteudo digite: /conteudo 'sua_matricula'.\nExemplo: /conteudo 123456789")
+                return ConversationHandler.END
+            else:
+                await update.message.reply_text("Digite a matricula do seu professor:")
+
+    except Exception as e:
+        await context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text=f"Erro. Tente novamente. \nException: {e}",
+                                 reply_markup=ReplyKeyboardRemove())
+        return ConversationHandler.END
+
+    return PROFESSOR
+
+async def cadastro_matricula_professor(update,context):
+    matriculaProfessor = update.message.text
+
+    existe_professor = await verifica_se_tem_professor_no_banco(matriculaProfessor)
+
+    if existe_professor:
+
+        await cadastrando_o_professor_do_aluno(matriculaProfessor)
+
+        user_info = update.message
+        await update.message.reply_text("Bem vindo, " + user_info.from_user.first_name +
+                                        "!.\nEsses são seus comandos:\n\n/receber_conteudo\n/contatos_Professor\n/plano_de_ensino")
+
+        return ConversationHandler.END
+    else:
+        await update.message.reply_text("Esse professor nao encontrado, digite novamente a matricula do seu professor:")
+
+        return PROFESSOR
+
+entrada_conversation = ConversationHandler(
+    entry_points=[CommandHandler("start", start)],
+    states={
+        ENTRADA: [MessageHandler(filters.TEXT, alunoEntrada)],
+        PROFESSOR: [MessageHandler(filters.TEXT, cadastro_matricula_professor)]
+    },
+    fallbacks=[CommandHandler("cancel", cancel)],
+)
+
+"""
+Essa parte lida com o envio do contato do professor
+"""
+
+async def contatos_Professor(update, context)->int:
+    await update.message.reply_text("Estes são os contatos da sua professora:\n\n"
+                              "E-mail: carla@boto.com\n"
+                              "Telegram: @profa_carla\n" + emoji.emojize(':house:') + " Sala S8, 35 14h-16h")
+"""
+Essa parte lida com o envio de conteudo ao professor
+"""
+
+async def conteudo(update, context) -> int:
+    try:
+        user_message = update.message.text
+        user_message = user_message.split(" ")
+        user_matricula = user_message[1]
+
+        int(user_matricula)
+
+        existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
+
+        if existe_matricula:
+            print("aqui vai ser a parte de de mandar o conteudo")
+        else:
+            await update.message.reply_text("Parece que você digitou sua matricula errado.\nTente Novamente: /conteudo 'sua matricula'.")
+
+
+    except Exception as e:
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text=f"Algo deu errado. \nException: {e}",
+                                 reply_markup=ReplyKeyboardRemove())
+
 
 
 
