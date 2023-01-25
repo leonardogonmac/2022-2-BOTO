@@ -2,10 +2,10 @@ from mysql.connector import connect
 from contextlib import contextmanager
 
 parametros = dict(
-    host='localhost',
+    host='35.247.224.118',
     port=3306,
-    user='username',     ## usar nome do seu usuario
-    password='',         ## usar senha do seu DB
+    user='root',
+    password='Eda{]OAlb(}1I:`k',
     database='BOT'
 )
 @contextmanager
