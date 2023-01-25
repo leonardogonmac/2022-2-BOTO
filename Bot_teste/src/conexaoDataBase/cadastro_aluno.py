@@ -22,19 +22,17 @@ async def verifica_se_matricula_aluno_tem_no_banco(matricula) -> int:
             except ProgrammingError as e :
                 print(f'Erro: {e.msg}')
 
-async def coloca_aluno_no_banco(matricula)->int:
+async def coloca_aluno_no_banco(matricula,nome)->int:
 
     tem_no_banco = await verifica_se_matricula_aluno_tem_no_banco(matricula)
 
     if tem_no_banco:
-        print("tem no banco")
         return True
     else:
         with nova_con() as con:
             try:
-                print("nao tem no banco")
                 SQL2 = "INSERT INTO alunos(nome,matricula,matriculaProfessor) VALUES (%s,%s,%s)"
-                infos2 = (str("beatriz"), str(matricula), str('null'))
+                infos2 = (str(nome), str(matricula), str('null'))
 
                 cursor = con.cursor()
                 cursor.execute(SQL2, infos2)

@@ -52,8 +52,10 @@ async def alunoEntrada(update, context)->int:
         if not tem_9_digitos:
             return ENTRADA
         else:
-            print("chegou auqi")
-            tem_no_banco = await coloca_aluno_no_banco(matricula)
+            user_info = update.message
+            nome = user_info.from_user.first_name + user_info.from_user.last_name
+
+            tem_no_banco = await coloca_aluno_no_banco(matricula,nome)
             if tem_no_banco:
                 user_info = update.message
                 await update.message.reply_text("Bem vindo, " + user_info.from_user.first_name +
@@ -82,7 +84,9 @@ async def cadastro_matricula_professor(update,context):
 
         user_info = update.message
         await update.message.reply_text("Bem vindo, " + user_info.from_user.first_name +
-                                        "!.\nEsses são seus comandos:\n\n/receber_conteudo\n/contatos_Professor\n/plano_de_ensino")
+                                        "!.\nEsses são seus comandos:\n\n/contatos_Professor\n/plano_de_ensino")
+        await update.message.reply_text(
+            "Para receber seu conteudo digite: /conteudo 'sua_matricula'.\nExemplo: /conteudo 123456789")
 
         return ConversationHandler.END
     else:
