@@ -1,19 +1,9 @@
-from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, Update
-from telegram.ext import (
-    Application,
-    CommandHandler,
-    ContextTypes,
-    ConversationHandler,
-    MessageHandler,
-    filters,
-)
-
 from telegram.ext import *
 import handlers_prof
 
 def main():
 
-    TOKEN = ""
+    TOKEN = "5883178059:AAHKrIoW0mHitBZO9F7HBxMgW1Lpa9nmZAE"
 
     dp =  Application.builder().token(TOKEN).build()
 

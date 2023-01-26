@@ -3,7 +3,7 @@ import handlers_aluno
 
 def main():
 
-    TOKEN = "5840991803:AAGxIhCYY3dNqpQglvaxkdLZp0zMAwKlpZk"
+    TOKEN = "5863798859:AAG_ksOXC34aC-cINEIQ93G12REScFy5uf0"
 
     dp = Application.builder().token(TOKEN).build()
 

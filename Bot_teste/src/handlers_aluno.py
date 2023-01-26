@@ -2,6 +2,7 @@ from telegram import ReplyKeyboardRemove, Update
 from telegram.ext import *
 from uteis import *
 from conexaoDataBase.cadastro_aluno import *
+from conexaoDataBase.enviar_info import *
 import logging
 import emoji
 
@@ -115,9 +116,12 @@ Essa parte lida com o envio de conteudo ao aluno
 
 async def conteudo(update, context) -> int:
     try:
-        existe_matricula = await pega_e_verifica_matricula(update, context)
+        user_matricula = pega_mensagem_quebrada(update, context)
+
+        existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
 
         if existe_matricula:
+            print(user_matricula)
             print("aqui vai ser a parte de de mandar o conteudo")
         else:
             await update.message.reply_text("Parece que você digitou sua matricula errado.\nTente Novamente: /conteudo 'sua matricula'.")
@@ -133,14 +137,22 @@ Essa parte lida com o envio de plano de ensino ao aluno
 """
 async def plano_de_ensino(update, context) -> int:
     try:
-        existe_matricula = await pega_e_verifica_matricula(update,context)
+        user_matricula = pega_mensagem_quebrada(update, context)
+
+        existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
 
         if existe_matricula:
-            print("aqui vai ser a parte de de mandar o plano de ensino")
+            plano_de_enc = await busca_professor(user_matricula)
+
+            if plano_de_enc == None:
+                await update.message.reply_text(f"Seu plano de ensino não esta cadastrado")
+            else:
+                await update.message.reply_text(f"Seu plano de ensino: \n {plano_de_enc}")
+
         else:
             await update.message.reply_text("Parece que você digitou sua matricula errado.\nTente Novamente: /plano_de_ensino 'sua matricula'.")
 
 
     except Exception as e:
         texto = "Tente Novamente: /plano_de_ensino 'sua matricula'"
-        await messagem_para_algo_de_errado(update,context,e,texto)
+        await messagem_para_algo_de_errado(update, context, e, texto)

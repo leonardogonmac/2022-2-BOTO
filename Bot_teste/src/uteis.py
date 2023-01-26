@@ -28,9 +28,3 @@ async def messagem_para_algo_de_errado(update,context,e,textoDesejado)->int:
     await context.bot.send_message(chat_id=update.effective_chat.id,
                              text=f"Algo deu errado. \nException: {e}\n{textoDesejado}",
                              reply_markup=ReplyKeyboardRemove())
-async def pega_e_verifica_matricula(update,context)->int:
-    user_matricula = pega_mensagem_quebrada(update, context)
-
-    existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
-
-    return existe_matricula
