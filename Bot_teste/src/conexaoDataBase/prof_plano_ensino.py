@@ -1,5 +1,5 @@
 from mysql.connector import ProgrammingError
-from Bot_teste.src.conexaoDataBase.db.databaseBOTO import nova_con
+from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
 
 """Função que recebe o link do plano de ensino e a coloca na tabela do banco de dados"""
 async def colocar_plano(link) -> int:
