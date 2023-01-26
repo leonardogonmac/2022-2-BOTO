@@ -66,9 +66,7 @@ async def alunoEntrada(update, context)->int:
                 await update.message.reply_text("Digite a matricula do seu professor:")
 
     except Exception as e:
-        await context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text=f"Erro. Tente novamente. \nException: {e}",
-                                 reply_markup=ReplyKeyboardRemove())
+        await messagem_para_algo_de_errado(update,context,e," ")
         return ConversationHandler.END
 
     return PROFESSOR
@@ -112,18 +110,12 @@ async def contatos_Professor(update, context)->int:
                               "E-mail: carla@boto.com\n"
                               "Telegram: @profa_carla\n" + emoji.emojize(':house:') + " Sala S8, 35 14h-16h")
 """
-Essa parte lida com o envio de conteudo ao professor
+Essa parte lida com o envio de conteudo ao aluno
 """
 
 async def conteudo(update, context) -> int:
     try:
-        user_message = update.message.text
-        user_message = user_message.split(" ")
-        user_matricula = user_message[1]
-
-        int(user_matricula)
-
-        existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
+        existe_matricula = await pega_e_verifica_matricula(update, context)
 
         if existe_matricula:
             print("aqui vai ser a parte de de mandar o conteudo")
@@ -132,10 +124,23 @@ async def conteudo(update, context) -> int:
 
 
     except Exception as e:
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text=f"Algo deu errado. \nException: {e}",
-                                 reply_markup=ReplyKeyboardRemove())
+        texto = "Tente Novamente: /conteudo 'sua matricula'"
+        await messagem_para_algo_de_errado(update, context, e, texto)
 
 
+"""
+Essa parte lida com o envio de plano de ensino ao aluno
+"""
+async def plano_de_ensino(update, context) -> int:
+    try:
+        existe_matricula = await pega_e_verifica_matricula(update,context)
+
+        if existe_matricula:
+            print("aqui vai ser a parte de de mandar o plano de ensino")
+        else:
+            await update.message.reply_text("Parece que você digitou sua matricula errado.\nTente Novamente: /plano_de_ensino 'sua matricula'.")
 
 
+    except Exception as e:
+        texto = "Tente Novamente: /plano_de_ensino 'sua matricula'"
+        await messagem_para_algo_de_errado(update,context,e,texto)
