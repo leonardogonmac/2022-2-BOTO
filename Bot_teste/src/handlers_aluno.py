@@ -3,6 +3,7 @@ from telegram.ext import *
 from uteis import *
 from conexaoDataBase.cadastro_aluno import *
 from conexaoDataBase.enviar_info import *
+from conexaoDataBase.recebe_conteudo import *
 import logging
 import emoji
 
@@ -121,8 +122,7 @@ async def conteudo(update, context) -> int:
         existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
 
         if existe_matricula:
-            print(user_matricula)
-            print("aqui vai ser a parte de de mandar o conteudo")
+            conteudo = await busca_professor_conteudo(user_matricula)
         else:
             await update.message.reply_text("Parece que você digitou sua matricula errado.\nTente Novamente: /conteudo 'sua matricula'.")
 

@@ -1,5 +1,5 @@
 from mysql.connector import ProgrammingError
-from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
+from src.conexaoDataBase.databaseBOTO import nova_con
 import pandas as pd
 
 async def enviar_planilha_banco() ->int:
