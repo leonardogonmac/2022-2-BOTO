@@ -1,5 +1,4 @@
 from telegram import ReplyKeyboardRemove
-from conexaoDataBase.cadastro_aluno import *
 async def verificar_se_matricula_tem_9_dig(update, context, matricula) -> int:
     if len(matricula) == 9:
         # Descobrindo informaçôes do usuario atraves da conta dele no telegram
