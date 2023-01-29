@@ -1,7 +1,8 @@
 from mysql.connector import ProgrammingError
 from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
-def recebe_plano(matriculaProfessor):
 
+
+def recebe_plano(matriculaProfessor):
     SQL = "SELECT plano_de_ensino FROM professor WHERE matricula = %s"
     parametros = [str(matriculaProfessor)]
 
@@ -20,7 +21,8 @@ def recebe_plano(matriculaProfessor):
         except ProgrammingError as e:
             print(f'Erro: {e.msg}')
 
-async def busca_professor(matriculaAluno)->int:
+
+async def busca_professor(matriculaAluno) -> int:
     SQL = "SELECT matriculaProfessor FROM alunos WHERE matricula = %s"
     param = [str(matriculaAluno)]
 
