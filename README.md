@@ -3,6 +3,13 @@
     <img src="https://github.com/fga-eps-mds/2022-2-BOTO/blob/main/assets/img/icon.png" height="400px" width="400px"></img>
 </div>
 
+<div align="center">
+
+  <a href="">[![Maintainability](https://api.codeclimate.com/v1/badges/cf4ab80835f1ec26d2ff/maintainability)](https://codeclimate.com/github/fga-eps-mds/2022-2-BOTO/maintainability)</a>
+</div>
+
+
+
 # <h1 align="center"> BOTO </h1>
 Esse repostório é destinado para atualizar, modificar e informar aos usuários e/ou contribuintes do repositório sobre o nosso bot BOTO.
 
