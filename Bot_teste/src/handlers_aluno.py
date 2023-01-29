@@ -171,7 +171,8 @@ async def plano_de_ensino(update, context) -> int:
         existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
 
         if existe_matricula:
-            plano_de_enc = await busca_professor(user_matricula)
+            coluna="plano_de_ensino"
+            plano_de_enc = await busca_professor(user_matricula, coluna)
 
             if plano_de_enc == None:
                 await update.message.reply_text(f"Seu plano de ensino não esta cadastrado")
@@ -185,4 +186,28 @@ async def plano_de_ensino(update, context) -> int:
 
     except Exception as e:
         texto = "Tente Novamente: /plano_de_ensino 'sua matricula'"
+        await messagem_para_algo_de_errado(update, context, e, texto)
+
+async def contato(update, context) -> int:
+    try:
+        user_matricula = pega_mensagem_quebrada(update, context)
+
+        existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
+
+        if existe_matricula:
+            coluna="contato"
+            contato = await busca_professor(user_matricula, coluna)
+
+            if contato == None:
+                await update.message.reply_text(f"O contato do seu professor não esta cadastrado")
+            else:
+                await update.message.reply_text(f"O contato do seu professor(a) : \n {contato}")
+
+        else:
+            await update.message.reply_text(
+                "Parece que você digitou sua matricula errado.\nTente Novamente: /contato 'sua matricula'.")
+
+
+    except Exception as e:
+        texto = "Tente Novamente: /contato 'sua matricula'"
         await messagem_para_algo_de_errado(update, context, e, texto)

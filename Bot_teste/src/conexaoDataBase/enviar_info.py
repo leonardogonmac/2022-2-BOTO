@@ -2,8 +2,14 @@ from mysql.connector import ProgrammingError
 from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
 
 
-def recebe_plano(matriculaProfessor):
-    SQL = "SELECT plano_de_ensino FROM professor WHERE matricula = %s"
+def seleciona_coluna(coluna):
+
+    if coluna == 'plano_de_ensino':
+        return "SELECT plano_de_ensino FROM professor WHERE matricula = %s"
+    elif coluna == 'contato':
+        return "SELECT contato FROM professor WHERE matricula = %s"
+def recebe_info(matriculaProfessor, coluna):
+    SQL = seleciona_coluna(coluna)
     parametros = [str(matriculaProfessor)]
 
     with nova_con() as con:
@@ -11,18 +17,16 @@ def recebe_plano(matriculaProfessor):
             cursor = con.cursor()
             cursor.execute(SQL, parametros)
 
-            prof_plano = cursor.fetchone()
-            professor_plano = prof_plano[0]
+            prof_info = cursor.fetchone()
+            info = prof_info[0]
 
-            print(professor_plano)
-
-            return professor_plano
+            return info
 
         except ProgrammingError as e:
             print(f'Erro: {e.msg}')
 
 
-async def busca_professor(matriculaAluno) -> int:
+async def busca_professor(matriculaAluno, coluna) -> int:
     SQL = "SELECT matriculaProfessor FROM alunos WHERE matricula = %s"
     param = [str(matriculaAluno)]
 
@@ -34,9 +38,7 @@ async def busca_professor(matriculaAluno) -> int:
             prof_matricula = cursor.fetchone()
             prof_matricula = prof_matricula[0]
 
-            print(prof_matricula)
-
-            return recebe_plano(prof_matricula)
+            return recebe_info(prof_matricula, coluna)
 
         except ProgrammingError as e:
             print(f'Erro: {e.msg}')
