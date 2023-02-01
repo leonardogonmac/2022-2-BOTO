@@ -20,6 +20,9 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 ## :space_invader: Tecnologias utilizadas
 - Python
 - MySQL
+- Spring Boot
+- Javascript
+- React JS
 
 ## :hammer: Nossa arquitetura
 > :construction: Projeto em construção :construction:
