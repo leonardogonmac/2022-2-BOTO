@@ -32,6 +32,8 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 #### Pré-Requisitos
 - Python 
 - Telegram
+- Node
+- Java 11
 
 #### Instalando e executando
 ``````
