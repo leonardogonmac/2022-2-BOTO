@@ -1,15 +1,15 @@
 package com.boto.autenticacaoprofessor.conntroller.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProfessorDto {
     private String nome;
     private String email;
-    private String senha;
     private String matricula;
+    private String senha;
 }

@@ -25,11 +25,11 @@ public class ProfessorServiceImpl implements ProfessorService {
     public Professor autenticar(String email, String senha) {
         Optional<Professor> professor = repository.findByEmail(email);
         if(!professor.isPresent()){
-            throw new ErroAutenticacao("Usuario não encontrado para o email informado");
+            throw new ErroAutenticacao("Usuário não encontrado para o email informado");
         }
 
         if (!professor.get().getSenha().equals(senha)){
-            throw new ErroAutenticacao("Senha invalida");
+            throw new ErroAutenticacao("Senha inválida");
         }
         return professor.get();
     }
@@ -38,6 +38,7 @@ public class ProfessorServiceImpl implements ProfessorService {
     @Transactional
     public Professor salvarProfessor(Professor professor) {
         validarEmail(professor.getEmail());
+        validarMatricula(professor.getMatricula());
         return repository.save(professor);
     }
 
@@ -45,7 +46,15 @@ public class ProfessorServiceImpl implements ProfessorService {
     public void validarEmail(String email) {
         boolean existe = repository.existsByEmail(email);
         if (existe){
-            throw new RegraDeNegocioException("Email já cadastrado");
+            throw new RegraDeNegocioException("Email já cadastrado.");
         }
+    }
+
+    public boolean validarMatricula(String matricula){
+        boolean existe = repository.existsByMatricula(matricula);
+        if (existe){
+            throw new RegraDeNegocioException("Matrícula já cadastrada.");
+        }
+        return existe;
     }
 }
