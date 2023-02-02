@@ -1,5 +1,5 @@
 from mysql.connector import ProgrammingError
-from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
+from Boto.src.conexaoDataBase.databaseBOTO import nova_con
 
 
 def seleciona_coluna(coluna):
@@ -7,7 +7,7 @@ def seleciona_coluna(coluna):
     if coluna == 'plano_de_ensino':
         return "SELECT plano_de_ensino FROM professor WHERE matricula = %s"
     elif coluna == 'contato':
-        return "SELECT contato FROM professor WHERE matricula = %s"
+        return "SELECT email FROM professor WHERE matricula = %s"
 def recebe_info(matriculaProfessor, coluna):
     SQL = seleciona_coluna(coluna)
     parametros = [str(matriculaProfessor)]

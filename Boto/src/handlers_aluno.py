@@ -1,8 +1,10 @@
-from telegram import Update
 from uteis import *
+from telegram import ReplyKeyboardRemove, Update
+from telegram.ext import *
 from conexaoDataBase.cadastro_aluno import *
 from conexaoDataBase.enviar_info import *
 from conexaoDataBase.recebe_conteudo import *
+from conexaoDataBase.uteis import *
 import logging
 import emoji
 
@@ -96,7 +98,7 @@ async def cadastro_matricula_professor(update, context):
 
         return ConversationHandler.END
     else:
-        await update.message.reply_text("Esse professor nao encontrado, digite novamente a matricula do seu professor:")
+        await update.message.reply_text("Esse professor não foi encontrado, digite novamente a matricula do seu professor:")
 
         return PROFESSOR
 
@@ -163,7 +165,6 @@ async def conteudo(update, context) -> int:
 Essa parte lida com o envio de plano de ensino ao aluno
 """
 
-
 async def plano_de_ensino(update, context) -> int:
     try:
         user_matricula = pega_mensagem_quebrada(update, context)
@@ -175,7 +176,7 @@ async def plano_de_ensino(update, context) -> int:
             plano_de_enc = await busca_professor(user_matricula, coluna)
 
             if plano_de_enc == None:
-                await update.message.reply_text(f"Seu plano de ensino não esta cadastrado")
+                await update.message.reply_text(f"Seu plano de ensino não está cadastrado")
             else:
                 await update.message.reply_text(f"Seu plano de ensino: \n {plano_de_enc}")
 

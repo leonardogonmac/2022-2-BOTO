@@ -1,10 +1,10 @@
 from mysql.connector import ProgrammingError
-from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
+from Boto.src.conexaoDataBase.databaseBOTO import nova_con
 import pandas as pd
 
 
-async def enviar_planilha_banco() -> int:
-    tabela = pd.read_excel("./conexaoDataBase/PlanilhasPreenchidas/planilha_preenchida.xlsx")
+async def enviar_planilha_banco(matricula_professor) -> int:
+    tabela = pd.read_excel(f"./conexaoDataBase/PlanilhasPreenchidas/{matricula_professor}.xlsx")
     numeroDeLinhas = len(tabela.index)
     print(numeroDeLinhas)
 
@@ -12,7 +12,7 @@ async def enviar_planilha_banco() -> int:
         titulo = tabela['titulo'][i]
         link = tabela['link'][i]
         link_extra = tabela['link_extra'][i]
-        matriculaProfessor = 123456
+        matriculaProfessor = matricula_professor
 
         SQL = "INSERT INTO conteudos(titulo, link, link_extra,matriculaProfessor) VALUES (%s,%s,%s,%s)"
         conteudos = (str(titulo), str(link), str(link_extra), str(matriculaProfessor))
@@ -25,5 +25,4 @@ async def enviar_planilha_banco() -> int:
                 print("sucesso")
             except ProgrammingError as e:
                 print(f'Erro: {e.msg}')
-            else:
-                print('1 id incluido, ID:', cursor.lastrowid)
+

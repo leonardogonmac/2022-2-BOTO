@@ -1,5 +1,5 @@
 from mysql.connector import *
-from Bot_teste.src.conexaoDataBase.databaseBOTO import nova_con
+from Boto.src.conexaoDataBase.databaseBOTO import nova_con
 
 async def buscar_professor_conteudo(matriculaAluno)->int:
     SQL = "SELECT matriculaProfessor FROM alunos WHERE matricula = %s"
