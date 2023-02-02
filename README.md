@@ -48,6 +48,11 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
     $ pip install mysql-connector-python
     $ pip install pymysql
 ``````
+* Para conseguir utilizar o FrontEnd:
+`````
+
+
+`````
   
 ### Utilização
 - Consiga um Token em [BotFather](https://telegram.me/BotFather)
