@@ -1,5 +1,6 @@
 package com.boto.autenticacaoprofessor.service;
 
+//n ta feito ainda
 import com.boto.autenticacaoprofessor.exception.RegraDeNegocioException;
 import com.boto.autenticacaoprofessor.model.enntity.Professor;
 import com.boto.autenticacaoprofessor.model.repository.ProfessorRepository;

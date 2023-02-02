@@ -8,4 +8,6 @@ public interface ProfessorService {
     Professor salvarProfessor(Professor professor);
 
     void validarEmail(String email);
+
+    boolean validarMatricula(String matricula);
 }

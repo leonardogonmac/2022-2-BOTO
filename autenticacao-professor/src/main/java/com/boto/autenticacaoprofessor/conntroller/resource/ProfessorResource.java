@@ -24,8 +24,8 @@ public class ProfessorResource {
         Professor professor = Professor.builder()
                                         .nome(professorDto.getNome())
                                         .email(professorDto.getEmail())
-                                        .senha(professorDto.getSenha())
                                         .matricula(professorDto.getMatricula())
+                                        .senha(professorDto.getSenha())
                                         .build();
         try {
            Professor usuarioSalvo = professorService.salvarProfessor(professor);

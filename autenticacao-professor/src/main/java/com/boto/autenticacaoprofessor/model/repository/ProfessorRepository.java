@@ -9,4 +9,6 @@ public interface ProfessorRepository extends JpaRepository<Professor,Long> {
 
     Optional<Professor> findByEmail(String email);
 
+    boolean existsByMatricula(String matricula);
+
 }
