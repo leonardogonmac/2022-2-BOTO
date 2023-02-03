@@ -47,7 +47,7 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
     $ pip install openpyxl
     $ pip install mysql-connector-python
     $ pip install pymysql
-    $ pip install opencv-python
+    
 ````````    
   
 ### Utilização
