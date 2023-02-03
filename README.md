@@ -48,17 +48,7 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
     $ pip install mysql-connector-python
     $ pip install pymysql
     $ pip install opencv-python
-    
-``````
-* Para conseguir utilizar o FrontEnd:
-`````
-- Tenha instalado na sua máquina o projeto que inclui o back-end e o front-end;
-- Baixe o ### node.js;
-- No prompt de comando do seu PC, dê esse comando "npm install -g yarn", Para instalar o YARN.
-- No prompt de comando do seu PC, dê esse comando "npm install -g create-react-app", Para instalar o react.
-- 
-
-`````
+````````    
   
 ### Utilização
 - Consiga um Token em [BotFather](https://telegram.me/BotFather)
