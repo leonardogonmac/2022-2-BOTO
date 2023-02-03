@@ -22,7 +22,6 @@ async def enviar_planilha_banco(matricula_professor) -> int:
                 cursor = con.cursor()
                 cursor.execute(SQL, conteudos)
                 con.commit()
-                print("sucesso")
             except ProgrammingError as e:
                 print(f'Erro: {e.msg}')
 
