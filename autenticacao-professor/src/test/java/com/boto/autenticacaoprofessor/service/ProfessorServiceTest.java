@@ -51,4 +51,20 @@ public class ProfessorServiceTest{
         Assertions.assertThat(professorSalvo.getMatricula()).isEqualTo("111111111");
     }
 
+    @Test
+    public void naoDeveSalvarUmProfessorComEmailJaCadastrado() {
+        //cenario
+        String email = "email@email.com";
+        Professor professor = Professor.builder().email(email).build();
+        Mockito.doThrow(RegraDeNegocioException.class).when(service).validarEmail(email);
+
+        //acao
+        org.junit.jupiter.api.Assertions
+                .assertThrows(RegraDeNegocioException.class, () -> service.salvarProfessor(professor) ) ;
+
+        //verificacao
+        Mockito.verify( repository, Mockito.never() ).save(professor);
+    }
+
+   
 }
