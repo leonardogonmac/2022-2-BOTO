@@ -1,37 +1,54 @@
 package com.boto.autenticacaoprofessor.service;
 
-//n ta feito ainda
-import com.boto.autenticacaoprofessor.exception.RegraDeNegocioException;
-import com.boto.autenticacaoprofessor.model.enntity.Professor;
-import com.boto.autenticacaoprofessor.model.repository.ProfessorRepository;
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.Mockito;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+import com.boto.autenticacaoprofessor.exception.ErroAutenticacao;
+import com.boto.autenticacaoprofessor.exception.RegraDeNegocioException;
+import com.boto.autenticacaoprofessor.model.entity.Professor;
+import com.boto.autenticacaoprofessor.model.repository.ProfessorRepository;
+import com.boto.autenticacaoprofessor.service.impl.ProfessorServiceImpl;
+
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
-public class ProfessorServiceTest {
-    @Autowired
-    ProfessorService professorService;
+public class ProfessorServiceTest{
+    @SpyBean
+    ProfessorServiceImpl service;
 
-    @Autowired
-    ProfessorRepository professorRepository;
+    @MockBean
+    ProfessorRepository repository;
+
     @Test
-    public void deveValidarEmail(){
-        professorRepository.deleteAll();
-        professorService.validarEmail("tales@gmail.com");
-    }
-    @Test
-    public void deveLancarErroQuandoEmailJaExiste(){
-        Professor professor = Professor.builder().nome("Tales").email("talesrodrigues@gmail.com").senha("123").matricula("211041295").build();
-        professorRepository.save(professor);
+    public void deveSalvarUmProfessor() {
+        //cenário
+        Mockito.doNothing().when(service).validarEmail(Mockito.anyString());
+        Professor professor = Professor.builder()
+                .id(1l)
+                .nome("nome")
+                .email("email@email.com")
+                .senha("senha")
+                .matricula("111111111").build();
 
-        professorService.validarEmail("talesrodrigues@gmail.com");
+        Mockito.when(repository.save(Mockito.any(Professor.class))).thenReturn(professor);
 
+        //acao
+        Professor professorSalvo = service.salvarProfessor(new Professor());
+
+        //verificao
+        Assertions.assertThat(professorSalvo).isNotNull();
+        Assertions.assertThat(professorSalvo.getId()).isEqualTo(1l);
+        Assertions.assertThat(professorSalvo.getNome()).isEqualTo("nome");
+        Assertions.assertThat(professorSalvo.getEmail()).isEqualTo("email@email.com");
+        Assertions.assertThat(professorSalvo.getSenha()).isEqualTo("senha");
+        Assertions.assertThat(professorSalvo.getMatricula()).isEqualTo("111111111");
     }
+
 }

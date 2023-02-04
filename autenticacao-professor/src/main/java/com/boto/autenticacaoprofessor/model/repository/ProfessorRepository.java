@@ -1,5 +1,5 @@
 package com.boto.autenticacaoprofessor.model.repository;
-import com.boto.autenticacaoprofessor.model.enntity.Professor;
+import com.boto.autenticacaoprofessor.model.entity.Professor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

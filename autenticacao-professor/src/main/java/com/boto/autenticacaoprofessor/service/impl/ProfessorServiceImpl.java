@@ -2,7 +2,7 @@ package com.boto.autenticacaoprofessor.service.impl;
 
 import com.boto.autenticacaoprofessor.exception.ErroAutenticacao;
 import com.boto.autenticacaoprofessor.exception.RegraDeNegocioException;
-import com.boto.autenticacaoprofessor.model.enntity.Professor;
+import com.boto.autenticacaoprofessor.model.entity.Professor;
 import com.boto.autenticacaoprofessor.model.repository.ProfessorRepository;
 import com.boto.autenticacaoprofessor.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.boto.autenticacaoprofessor.service;
 
-import com.boto.autenticacaoprofessor.model.enntity.Professor;
+import com.boto.autenticacaoprofessor.model.entity.Professor;
 
 public interface ProfessorService {
     Professor autenticar(String email,String senha);

@@ -3,7 +3,7 @@ package com.boto.autenticacaoprofessor.conntroller.resource;
 import com.boto.autenticacaoprofessor.conntroller.dto.ProfessorDto;
 import com.boto.autenticacaoprofessor.exception.ErroAutenticacao;
 import com.boto.autenticacaoprofessor.exception.RegraDeNegocioException;
-import com.boto.autenticacaoprofessor.model.enntity.Professor;
+import com.boto.autenticacaoprofessor.model.entity.Professor;
 import com.boto.autenticacaoprofessor.service.ProfessorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

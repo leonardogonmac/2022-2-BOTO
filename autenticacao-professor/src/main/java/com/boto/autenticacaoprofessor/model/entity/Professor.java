@@ -1,4 +1,4 @@
-package com.boto.autenticacaoprofessor.model.enntity;
+package com.boto.autenticacaoprofessor.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
