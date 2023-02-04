@@ -11,6 +11,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+PLANO, ENTRADA, PLANILHA, ENVIA = range(4)
 
 """
 Essa parte e para lidar com a comandos extras
@@ -24,11 +25,9 @@ def not_finished(update, context):
 
 ##menu de comandos
 def help_command(update, context):
-    update.message.reply_text("Eu posso te ajudar a enviar e acessar conteúdos e materiais.\n "
-                              "Você pode utilizar os seguintes comandos:\n"
-                              "\n"
+    update.message.reply_text("Esses são seus comandos:\n"
                               "/cadastrar_conteudo - Para cadastrar o conteudo da sua materia;\n"
-                              "/enviar_plano_de_ensino - Para enviar seu plano de ensino;\n")
+                              "/enviar_plano_de_ensino - Para enviar seu plano de ensino;")
 
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -43,7 +42,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 """
 Essa parte e para lidar o envio de plano de ensino
 """
-PLANO = range(4)
+
 
 
 async def enviar_plano_de_ensino(update, context) -> int:
@@ -68,10 +67,10 @@ async def recebe_plano(update, context) -> int:
             await update.message.reply_text("Recebido " + emoji.emojize(':winking_face:'))
         else:
             await update.message.reply_text(
-                "Parece que você não esta cadastrado ou digitou sua matricula errada.")
+                "Parece que você não está cadastrado ou digitou sua matrícula/senha errada.")
 
     except Exception as e:
-        texto = "Tente Novamente: seu link, sua matricula e senha. Separados apenas por 1 espaço."
+        texto = "Tente Novamente: seu link, sua matrícula e senha. Separados apenas por 1 espaço."
         await messagem_para_algo_de_errado(update, context, e, texto)
         return PLANO
 
@@ -88,7 +87,7 @@ enviar_plano_conversation = ConversationHandler(
 """
 Essa parte e para lidar com o /start do professor
 """
-ENTRADA = range(4)
+
 
 
 async def start(update, context) -> int:
@@ -96,6 +95,7 @@ async def start(update, context) -> int:
     await update.message.reply_text("Após o cadastro você podera utilizar os comandos:\n"
                                     "/cadastrar_conteudo\n"
                                     "/enviar_plano_de_ensino")
+    await update.message.reply_text("Lembre-se de passar sua matricula para os seus alunos terem acesso a seus conteúdo e plano de ensino.")
 
     return ConversationHandler.END
 
@@ -110,12 +110,12 @@ async def cadastrar_conteudo(update, context) -> int:
         "Para cadastrar o seu conteudo faça uma copia da planilha abaixo, depois a preencha.")
     await update.message.reply_text("Tome cuidado não inclua nem exclua alguma coluna e nem altere seu nome.")
     await update.message.reply_text("https://1drv.ms/x/s!AkMmeo5LMub_aWBf1UGvt0X_hTs?e=DN43OT")
-    await update.message.reply_text("Apos preenche-la digite /enviar_planilha 'sua matricula' 'sua senha'")
+    await update.message.reply_text("Apos preenche-la digite /enviar_planilha.")
 
     return ConversationHandler.END
 
 
-PLANILHA, ENVIA = range(2)
+
 
 enviar_planilha_conversation = ConversationHandler(
     entry_points=[CommandHandler("enviar_planilha", enviar_planilha)],

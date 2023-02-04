@@ -1,11 +1,11 @@
 from telegram.ext import *
 import handlers_prof
 
-def main():
 
+def main():
     TOKEN = "5840991803:AAGxIhCYY3dNqpQglvaxkdLZp0zMAwKlpZk"
 
-    dp =  Application.builder().token(TOKEN).build()
+    dp = Application.builder().token(TOKEN).build()
 
     dp.add_handler(CommandHandler("help", handlers_prof.help_command))
     dp.add_handler(CommandHandler("cadastrar_conteudo", handlers_prof.cadastrar_conteudo))
@@ -17,6 +17,7 @@ def main():
     print("Bot started. . .\n")
     dp.run_polling()
     print("Bot finished. . .\n")
+
 
 if __name__ == "__main__":
     main()

@@ -13,8 +13,5 @@ async def colocar_plano(link, matricula_professor) -> int:
             cursor = con.cursor()
             cursor.execute(SQL,val)
             con.commit()
-            print("sucesso")
         except ProgrammingError as e:
             print(f'Erro: {e.msg}')
-        else:
-            print('1 id incluido, ID:', cursor.lastrowid)

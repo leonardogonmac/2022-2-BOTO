@@ -6,7 +6,6 @@ from conexaoDataBase.enviar_info import *
 from conexaoDataBase.recebe_conteudo import *
 from conexaoDataBase.uteis import *
 import logging
-import emoji
 
 # Enable logging
 logging.basicConfig(
@@ -20,14 +19,11 @@ Essa parte e para lidar com a comandos extras
 
 
 async def help_command(update, context) -> int:
-    await update.message.reply_text("Eu posso te ajudar a enviar e acessar conteúdos e materiais.\n "
-                                    "Você pode utilizar os seguintes comandos:\n"
-                                    "\n"
-                                    "/novo_conteudo - envia um link de um novo conteúdo para a base de dados;\n"
-                                    "/acessar_conteudo - acessa um conteúdo existente na base de dados;\n"
-                                    "/deletar_conteudo - apaga um conteudo na base de dados;\n"
-                                    "/editar_conteudo - altera um conteudo existente na base de dados.\n"
-                                    "/contatosProfessor - exibe formas de entrar em contato com o professor.")
+    await update.message.reply_text("Esses são seus comandos:\n"
+                                    "/conteudo 'sua matricula'\n"
+                                    "/plano_de_ensino 'sua matricula'\n"
+                                    "/contato 'sua matricula'\n"
+                                    "Observe que os seus comandos devem ter o /comando e a sua matricula separada por um espaço: Ex: /contato 123456789")
 
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -98,7 +94,8 @@ async def cadastro_matricula_professor(update, context):
 
         return ConversationHandler.END
     else:
-        await update.message.reply_text("Esse professor não foi encontrado, digite novamente a matricula do seu professor:")
+        await update.message.reply_text(
+            "Esse professor não foi encontrado, digite novamente a matricula do seu professor:")
 
         return PROFESSOR
 
@@ -113,19 +110,9 @@ entrada_conversation = ConversationHandler(
 )
 
 """
-Essa parte lida com o envio do contato do professor
-"""
-
-
-async def contatos_Professor(update, context) -> int:
-    await update.message.reply_text("Estes são os contatos da sua professora:\n\n"
-                                    "E-mail: carla@boto.com\n"
-                                    "Telegram: @profa_carla\n" + emoji.emojize(':house:') + " Sala S8, 35 14h-16h")
-
-
-"""
 Essa parte lida com o envio de conteudo ao aluno
 """
+
 
 async def mensagem_conteudo(update, context, conteudo) -> int:
     if conteudo:
@@ -165,6 +152,7 @@ async def conteudo(update, context) -> int:
 Essa parte lida com o envio de plano de ensino ao aluno
 """
 
+
 async def plano_de_ensino(update, context) -> int:
     try:
         user_matricula = pega_mensagem_quebrada(update, context)
@@ -172,7 +160,7 @@ async def plano_de_ensino(update, context) -> int:
         existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
 
         if existe_matricula:
-            coluna="plano_de_ensino"
+            coluna = "plano_de_ensino"
             plano_de_enc = await busca_professor(user_matricula, coluna)
 
             if plano_de_enc == None:
@@ -189,18 +177,19 @@ async def plano_de_ensino(update, context) -> int:
         texto = "Tente Novamente: /plano_de_ensino 'sua matricula'"
         await messagem_para_algo_de_errado(update, context, e, texto)
 
-async def contato(update, context) -> int:
+
+async def contato_professor(update, context) -> int:
     try:
         user_matricula = pega_mensagem_quebrada(update, context)
 
         existe_matricula = await verifica_se_matricula_aluno_tem_no_banco(user_matricula)
 
         if existe_matricula:
-            coluna="contato"
+            coluna = "contato"
             contato = await busca_professor(user_matricula, coluna)
 
             if contato == None:
-                await update.message.reply_text(f"O contato do seu professor não esta cadastrado")
+                await update.message.reply_text(f"O contato do seu professor não está cadastrado")
             else:
                 await update.message.reply_text(f"O contato do seu professor(a) : \n {contato}")
 
