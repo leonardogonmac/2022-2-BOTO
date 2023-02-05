@@ -11,7 +11,8 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
-PLANO, ENTRADA, PLANILHA, ENVIA = range(4)
+PLANO = range(4)
+ENTRADA= range(4)
 
 """
 Essa parte e para lidar com a comandos extras
@@ -115,7 +116,7 @@ async def cadastrar_conteudo(update, context) -> int:
     return ConversationHandler.END
 
 
-
+PLANILHA, ENVIA = range(2)
 
 enviar_planilha_conversation = ConversationHandler(
     entry_points=[CommandHandler("enviar_planilha", enviar_planilha)],
