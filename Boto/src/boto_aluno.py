@@ -1,9 +1,8 @@
 from telegram.ext import *
 import handlers_aluno
 
-
 def main():
-    TOKEN = ""
+    TOKEN = "5971556610:AAFV3WHySq0gAFLGKDWW25-WHZnWyk2fGCs"
 
     dp = Application.builder().token(TOKEN).build()
 
