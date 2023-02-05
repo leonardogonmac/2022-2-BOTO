@@ -73,7 +73,7 @@ async def test_enviar_planilha(conv):
 @pytest.mark.anyio
 async def test_envia_xlsx(conv):
     """Aviso: precisa-se de um arquivo xlsx no modelo enviado para realizar esse teste"""
-    await conv.send_file(file="planilha.xlsx", caption="123456789 p123")
+    await conv.send_file(file="planilha.xlsx", caption="123456 p123")
 
     mensagem: Message = await conv.get_response()
     resposta_envio = ("Tudo certo. " + emoji.emojize(':winking_face:'))
@@ -87,7 +87,7 @@ async def test_plano_de_ensino(conv):
     assert resposta_envio in mensagem.text
 @pytest.mark.anyio
 async def test_enviar_plano(conv):
-    await conv.send_message("drive.com 123456789 p123")
+    await conv.send_message("drive.com 123456 p123")
     mensagem: Message = await conv.get_response()
     resposta_envio = ("Recebido " + emoji.emojize(':winking_face:'))
     assert resposta_envio in mensagem.text
