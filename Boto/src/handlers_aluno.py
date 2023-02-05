@@ -62,8 +62,11 @@ async def alunoEntrada(update, context) -> int:
             tem_no_banco = await coloca_aluno_no_banco(matricula, nome)
             if tem_no_banco:
                 user_info = update.message
-                await update.message.reply_text("Bem vindo, " + user_info.from_user.first_name +
-                                                "!.\nEsses são seus comandos:\n\n/contatos_Professor\n/plano_de_ensino")
+                await update.message.reply_text("Esses são seus comandos:\n"
+                                    "/conteudo 'sua matricula'\n"
+                                    "/plano_de_ensino 'sua matricula'\n"
+                                    "/contato 'sua matricula'\n"
+                                    "Observe que os seus comandos devem ter o /comando e a sua matricula separada por um espaço: Ex: /contato 123456789")
                 await update.message.reply_text(
                     "Para receber seu conteudo digite: /conteudo 'sua_matricula'.\nExemplo: /conteudo 123456789")
                 return ConversationHandler.END
