@@ -20,6 +20,7 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 ## :space_invader: Tecnologias utilizadas
 - Python
 - MySQL
+- MySQL Workbench
 - Spring Boot
 - Javascript
 - React JS
@@ -29,32 +30,27 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 
 ## :scroll: Guia de uso do BOTO
 
-#### Pré-Requisitos
-- Python 
-- Telegram
-- Node
-- Java 11
-
 #### Instalando e executando
 ``````
     git clone https://github.com/fga-eps-mds/2022-2-Squad02
- ``````   
-* Abra o projeto e no terminal digite:
 ``````
-    $ pip install python-telegram-bot --upgrade
-    $ pip install emoji
-    $ pip install pandas
-    $ pip install openpyxl
-    $ pip install mysql-connector-python
-    $ pip install pymysql
+#### Parte do Banco De Dados
+    
+#### Parte do Bot
+* Abra o projeto e no terminal digite:
+
+``````
+    $ pip install -r requirements.txt
     
 ````````    
-  
+#### Parte do Cadastro do Professor
 ### Utilização
-- Consiga um Token em [BotFather](https://telegram.me/BotFather)
-- Vá em Bot_teste/boto.py
-- Insira o TOKEN no arquivo.
-- Você já pode utilizar o Bot.
+- Consiga DOIS Token em [BotFather](https://telegram.me/BotFather)
+- Um dos tokens é para o bot aluno e outro para o bot professor
+- Vá em Boto/src/boto_aluno.py
+- Insira o TOKEN aluno no arquivo.
+- Vá em Boto/src/boto_professor.py
+- Insira o TOKEN professor no arquivo.
 
 
 # Squad 2
