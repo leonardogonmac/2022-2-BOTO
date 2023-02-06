@@ -55,4 +55,10 @@ A disciplina é carregada, mas eu gostei de cursar ela com a professora Carla, s
 
 - Leonardo Gonçalves Machado
 - Mylena Angélica Silva Farias	
+
+Eu gostei bastante da matéria. Realmente é uma disciplina que te faz enxergar como é o mundo de um desenvolvedor de software. Uma das coisas que eu mais gostei, foi que nós tínhamos a liberdade de utilizar as linguagens, framework que quisermos, sem precisar seguir nenhum modelo rígido.   
+
+Recomendo não deixar para estudar o conteúdo muito em cima da entrega, se preparar antes é algo que vai ajudar bastante ao longo do semestre.  
+
+Vou deixar uma frase aqui, que queria muito ter ouvido no início do semestre. "Você consegue!!" Vai ser trabalhoso, você vai fixar estressado, mas no final, você vai conseguir. 
 - Tales Rodrigues Gonçalves	
