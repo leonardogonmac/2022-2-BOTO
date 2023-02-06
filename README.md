@@ -35,13 +35,14 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
     git clone https://github.com/fga-eps-mds/2022-2-Squad02
 ``````
 #### Parte do Banco De Dados
-    
+
+Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOTO_script.sql. E em Boto/src/conexãoDataBase/databaseBOTO.py insira as informações do seu banco de dados
+
 #### Parte do Bot
 * Abra o projeto e no terminal digite:
 
 ``````
     $ pip install -r requirements.txt
-    
 ````````    
 #### Parte do Cadastro do Professor
 ### Utilização
