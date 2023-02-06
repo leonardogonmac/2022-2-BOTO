@@ -18,7 +18,7 @@
 - De começo não avaliamos devidamento os PR's, só posteriormente que fomos revisando e avaliando as coisas da devida prática do ágil.
 - Não tivemos uma visão muito clara de como testar o nosso código, então atrasamos um pouco nessa parte.
 - Em algumas Sprints as tarefas designadas precisavam da conclusão de outras, então isso atrasava alguns processos e dava uma dependência da produção do outro quando poderia ser algo conjunto.
-- O tempo demandando realmente é muito grande, conciliar a disciplina com as outras e manter o ritmo foi complicado, mas a professora sempre nos traquulizou quanto a isso, não deixando que a ansiedade a cobrança cruel caísse tanto por cima de nós.
+- O tempo demandando realmente é muito grande, conciliar a disciplina com as outras e manter o ritmo foi complicado, mas a professora sempre nos traquilizou quanto a isso, não deixando que a ansiedade a cobrança cruel caísse tanto por cima de nós.
 
 
 ## Conselhos para projetos futuros
@@ -32,6 +32,15 @@
 ## Opinião individual
 
 - Beatriz Vieira Nascimento (Scrum Master)
+
+Primeiramente, acredito que o ponto crucial para se fazer um bom projeto seja a comunicação entre o grupo. Sem essa comunicação algumas pessoas pessoas podem acabar ficanado perdida e se desinteressar pelo trabalho.
+
+O bom entendimento das ferramentas que você está utilizando é muito importante. Ler a documentação oficial das bibliotecas que você utiliza, por mais chato ou dificil de se entender no inicio, é uma das melhores formas de você compreender a sua ferramente é utiliza-la da forma correta.
+
+Como scrum master um dos cuidados que tive que ter foi compreender meus colegas. Compreender as dificuldades deles, o quanto que eles queriam se dedicar ao trabalho, e deixar claro para eles os caminhos que estamos seguindo para ninguém ficar perdido.
+
+Por fim, a disciplina ela é bem apressada, gostaria que tivessemos mais tempo para trabalhar no projeto com tranquilidade, porém de grande aprendizado. Acredito que após MDS eu evolui muito como desenvolvedora e pessoa.
+
 - Ana Beatriz Noberto da Silva
 - Ana Luíza Fernandes Alves da Rocha
 - Geovanna Maciel Avelino da Costa
@@ -42,9 +51,6 @@ Foi incrível aprender realmente as práticas ágeis, eu tive um contato breve n
 Aprender a como fazer um PR devidamente, todo o processo que te torna um programador profissional e como essa organização no Github ajuda no mercado de trabalho, foi muito esclarecedor.
 
 A disciplina é carregada, mas eu gostei de cursar ela com a professora Carla, sempre muito receptiva e com uma didática que não dava o ar de aula, mas sim de um bate papo entre DEV's, além de como ela nos mostrava o mercado de trabalho e nos encorajava a dar a cara a tapa. Única coisa que eu queria alertar é: se você é uma pessoa sensível (como eu) não vá na aula que a professora vai mostrar o "desastre", se você tiver muita falta, pode ir mas sai antes de ela mostrar o vídeo. RIP porquinho.
-
-
-
 
 
 - Leonardo Gonçalves Machado
