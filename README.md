@@ -34,7 +34,11 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 ``````
 #### Parte do Banco De Dados
 
-Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOTO_script.sql. E em Boto/src/conexãoDataBase/databaseBOTO.py insira as informações do seu banco de dados
+Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOTO_script.sql.
+
+Em Boto/src/conexãoDataBase/databaseBOTO.py insira as informações do seu banco de dados.
+
+E em autenticacao-professor/src/main/resources/application.properties insira as informações do seu banco de dados.
 
 #### Parte do Bot
 * Abra o projeto e no terminal digite:
