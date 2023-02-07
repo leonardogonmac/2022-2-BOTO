@@ -8,6 +8,9 @@
   <a href="">[![Maintainability](https://api.codeclimate.com/v1/badges/cf4ab80835f1ec26d2ff/maintainability)](https://codeclimate.com/github/fga-eps-mds/2022-2-BOTO/maintainability)</a>
 </div>
 
+<div align="center">
+<a href='https://coveralls.io/github/fga-eps-mds/2022-2-BOTO?branch=main'><img src='https://coveralls.io/repos/github/fga-eps-mds/2022-2-BOTO/badge.svg?branch=main' alt='Coverage Status' /></a>
+</div>
 
 
 # <h1 align="center"> BOTO </h1>
