@@ -42,6 +42,13 @@ Como scrum master um dos cuidados que tive que ter foi compreender meus colegas.
 Por fim, a disciplina ela é bem apressada, gostaria que tivessemos mais tempo para trabalhar no projeto com tranquilidade, porém de grande aprendizado. Acredito que após MDS eu evolui muito como desenvolvedora e pessoa.
 
 - Ana Beatriz Noberto da Silva
+
+A matéria de MDS foi vital para mim porque acredito que trabalhar em equipe é uma das maneiras mais efetivas de adquirir conhecimento e aperfeiçoar habilidades. Ao trabalharmos juntos, podemos debater ideias, resolver problemas juntos e aprender uns com os outros, resultando em uma compreensão mais profunda e fixar melhor o conhecimento.
+
+Ademais, vale destacar que este projeto é de grande importância para nossa futura entrada no mercado de trabalho, oferecendo uma experiência única e inigualável durante nossos estudos. No entanto, penso que se tivéssemos mais tempo para dedicarmos ao projeto em um semestre comum, poderíamos entregar um resultado final ainda melhor.
+
+Em síntese, participar de um projeto em grupo na faculdade é uma oportunidade preciosa para desenvolver habilidades, aprender e se preparar para o futuro. É válido mencionar que, apesar de alguns desafios e problemas técnicos surgidos ao longo do projeto, a dedicação e apoio do grupo nos permitiram superá-los.
+
 - Ana Luíza Fernandes Alves da Rocha
 - Geovanna Maciel Avelino da Costa
 
