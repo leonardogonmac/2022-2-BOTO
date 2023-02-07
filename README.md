@@ -63,8 +63,9 @@ Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOT
 - Um dos tokens é para o bot aluno e outro para o bot professor
 - Vá em Boto/src/boto_aluno.py
 - Insira o TOKEN aluno no arquivo.
-- Vá em Boto/src/boto_professor.py
+- Vá em Boto/src/boto_prof.py
 - Insira o TOKEN professor no arquivo.
+- Rode os arquivos boto_prof.py e boto_aluno.py
 
 # Squad 2
 
