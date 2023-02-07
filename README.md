@@ -46,13 +46,6 @@ Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOT
     $ pip install -r requirements.txt
 ````````    
 #### Parte do Cadastro do Professor
-### Utilização
-- Consiga DOIS Token em [BotFather](https://telegram.me/BotFather)
-- Um dos tokens é para o bot aluno e outro para o bot professor
-- Vá em Boto/src/boto_aluno.py
-- Insira o TOKEN aluno no arquivo.
-- Vá em Boto/src/boto_professor.py
-- Insira o TOKEN professor no arquivo.
 
 ```
 * Para conseguir utilizar o FrontEnd:
@@ -68,7 +61,13 @@ Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOT
 - Após ter feito toda essa instalação, no prompt de comando, dê o seguinte comando "cd C:\2022-BOTO\autenticacao-professor-app", em seguida dê esse outro comando "yarn start", para que a aplicação comece a rodar.
 - Logo em seguida, abra o back-end e navegue nas páginas: "src/main/java/com/boto/autenticacaoprofessor/AutentticacaoProfessorApplication" e clique em "run" para o back começar a rodar e conseguir se cadastrar. 
 `````
-
+### Utilização
+- Consiga DOIS Token em [BotFather](https://telegram.me/BotFather)
+- Um dos tokens é para o bot aluno e outro para o bot professor
+- Vá em Boto/src/boto_aluno.py
+- Insira o TOKEN aluno no arquivo.
+- Vá em Boto/src/boto_professor.py
+- Insira o TOKEN professor no arquivo.
 
 # Squad 2
 
