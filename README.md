@@ -26,9 +26,6 @@ O BOTO é um bot do telegram que facilita aos professores enviarem conteúdos pa
 - Javascript
 - React JS
 
-## :hammer: Nossa arquitetura
-> :construction: Projeto em construção :construction:
-
 ## :scroll: Guia de uso do BOTO
 
 #### Instalando e executando
