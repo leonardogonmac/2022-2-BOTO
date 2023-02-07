@@ -92,7 +92,7 @@ Essa parte e para lidar com o /start do professor
 
 
 async def start(update, context) -> int:
-    await update.message.reply_text("Olá, professor faça seu cadastro em: 'inserir link do web'.")
+    await update.message.reply_text("Olá, professor faça seu cadastro em: http://localhost:3000/#/cadastro-usuarios.")
     await update.message.reply_text("Após o cadastro você podera utilizar os comandos:\n"
                                     "/cadastrar_conteudo\n"
                                     "/enviar_plano_de_ensino")

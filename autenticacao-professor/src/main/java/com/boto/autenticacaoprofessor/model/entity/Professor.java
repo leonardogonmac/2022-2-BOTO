@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "professor",schema = "boto")
+@Table(name = "professor",schema = "bot")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -32,6 +32,9 @@ public class Professor {
 
     @Column(name = "matricula")
     private String matricula;
+
+    @Column(name = "plano_de_ensino")
+    private String plano_de_ensino;
 
 
 
