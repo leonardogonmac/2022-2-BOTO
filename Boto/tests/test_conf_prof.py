@@ -14,6 +14,8 @@ import emoji
 api_id = ''
 api_hash = ""
 session_str = ""
+
+
 @pytest.fixture(scope="session")
 async def conv():
     client = TelegramClient(
@@ -23,12 +25,14 @@ async def conv():
     await client.connect()
     await client.get_me()
     await client.get_dialogs()
-    async with client.conversation("@boto_testes_bot",timeout=10, max_messages=10000) as conv:
+    async with client.conversation("@boto_testes_bot", timeout=10, max_messages=10000) as conv:
         yield conv
+
 
 @pytest.fixture(scope="session")
 def anyio_backend():
     return "asyncio"
+
 
 @pytest.mark.anyio
 async def test_start(conv):
@@ -38,6 +42,7 @@ async def test_start(conv):
     resposta_start = ("Olá, professor faça seu cadastro em: 'inserir link do web'.")
     # Check that the message contains necessary text
     assert resposta_start in mensagem.text
+
 
 @pytest.mark.anyio
 async def test_cadastrar_conteudo(conv):
@@ -58,6 +63,7 @@ async def test_cadastrar_conteudo(conv):
     resposta_envio = ("Apos preenche-la digite /enviar_planilha.")
     assert resposta_envio in mensagem4.text
 
+
 @pytest.mark.anyio
 async def test_enviar_planilha(conv):
     await conv.send_message("/enviar_planilha")
@@ -70,6 +76,7 @@ async def test_enviar_planilha(conv):
     resposta_envio = ("Na mensagem/legenda junto ao documento insira sua matrícula e senha.")
     assert resposta_envio in mensagem2.text
 
+
 @pytest.mark.anyio
 async def test_envia_xlsx(conv):
     """Aviso: precisa-se de um arquivo xlsx no modelo enviado para realizar esse teste"""
@@ -79,12 +86,16 @@ async def test_envia_xlsx(conv):
     resposta_envio = ("Tudo certo. " + emoji.emojize(':winking_face:'))
     assert resposta_envio in mensagem.text
 
+
 @pytest.mark.anyio
 async def test_plano_de_ensino(conv):
     await conv.send_message("/enviar_plano_de_ensino")
     mensagem: Message = await conv.get_response()
-    resposta_envio = ("Envie um LINK DRIVE com seu plano de ensino, sua matricula e senha separados por 1 espaço.\nEx: drive.com '123456789' 'password123'")
+    resposta_envio = (
+        "Envie um LINK DRIVE com seu plano de ensino, sua matricula e senha separados por 1 espaço.\nEx: drive.com '123456789' 'password123'")
     assert resposta_envio in mensagem.text
+
+
 @pytest.mark.anyio
 async def test_enviar_plano(conv):
     await conv.send_message("drive.com 123456 p123")
