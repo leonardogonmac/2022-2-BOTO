@@ -50,6 +50,13 @@ Ademais, vale destacar que este projeto é de grande importância para nossa fut
 Em síntese, participar de um projeto em grupo na faculdade é uma oportunidade preciosa para desenvolver habilidades, aprender e se preparar para o futuro. É válido mencionar que, apesar de alguns desafios e problemas técnicos surgidos ao longo do projeto, a dedicação e apoio do grupo nos permitiram superá-los.
 
 - Ana Luíza Fernandes Alves da Rocha
+
+  A matéria de MDS foi incrível para mim, pois aprendi a trabalhar em equipe, ver mais funcionalidades do GIT, diversas palvras tecnicas, além de ver e testar novas linguagens. A minha maior dificuldade foi trabalhar em equipe, pois como somos pessoas diferentes agimos diferentes no local de "trabalho", as vezes ficava perdida em o que cada pessoa tava fazendo no trabalho. 
+  
+  Esse projeto tem uma imensa importancia na minha vida acadêmica, porque irei ter ele no meu portfolio do GitHub, e terei varias experinêcias para contar quando eu for fazer entrevistas e, também me fez criar novas habilidades para mexer com programas de outros usários.
+  
+  O ponto negativo que eu tenho para citar é: o conteúdo da materia, ao meu ponto de vista, foi dado muito apressado, me deixando perdida em certos pontos.
+  
 - Geovanna Maciel Avelino da Costa
 
 Eu entrei um pouco atrasada na matéria, entrei na matrícula extraordinária, então me alinhar com o grupo de começo foi um pouco difícil por timidez minha mesmo. Apesar disso eu achei muito interessante cursar a diciplina com minha equipe, são pessoas dedicadas e todos tinham um apreço por executar e finalizar o projeto da forma que foi idealizado.
@@ -69,4 +76,3 @@ Recomendo não deixar para estudar o conteúdo muito em cima da entrega, se prep
 
 Vou deixar uma frase aqui, que queria muito ter ouvido no início do semestre. "Você consegue!!" Vai ser trabalhoso, você vai fixar estressado, mas no final, você vai conseguir. 
 - Tales Rodrigues Gonçalves	
-- A disciplina de MDS teve muita importância para o desenvolvimento pessoal e profissional. A professora aborda em sala de aula vários temas cruciais para o desenvolvimento de software. O projeto permitiu que colocássemos esses conhecimentos em prática e desenvolvêssemos o trabalho em equipe. A matéria me ajudou muito a entender coisas que utilizo no meu estágio e a me aperfeiçoar como engenheiro de software.
