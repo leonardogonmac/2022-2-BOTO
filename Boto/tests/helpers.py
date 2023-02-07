@@ -14,7 +14,7 @@ from telethon.tl.custom.message import Message, MessageButton
 def random_string(length=16):
     """Return random string of ASCII letters in both registers."""
     return ''.join(
-        random.choice(string.ascii_letters) for _ in range (length)
+        random.choice(string.ascii_letters) for _ in range(length)
     )
 
 
@@ -29,7 +29,7 @@ def wait():
 # Simplifies the most frequent action - look for a button
 # with a given text either to check that it exists or click it.
 def get_button_with_text(
-    message: Message, text: str, strict: bool = False
+        message: Message, text: str, strict: bool = False
 ) -> Optional[MessageButton]:
     """Return MessageButton from Message with text or None."""
     if message.buttons is None:

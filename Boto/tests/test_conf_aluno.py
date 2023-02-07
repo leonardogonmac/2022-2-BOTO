@@ -11,6 +11,7 @@ api_id = ""
 api_hash = ""
 session_str = ""
 
+
 @pytest.fixture(scope="session")
 async def conv():
     client = TelegramClient(
@@ -20,12 +21,14 @@ async def conv():
     await client.connect()
     await client.get_me()
     await client.get_dialogs()
-    async with client.conversation("@boto_tests_aluno_bot",timeout=10, max_messages=10000) as conv:
+    async with client.conversation("@boto_tests_aluno_bot", timeout=10, max_messages=10000) as conv:
         yield conv
+
 
 @pytest.fixture(scope="session")
 def anyio_backend():
     return "asyncio"
+
 
 @pytest.mark.anyio
 async def test_start(conv):
@@ -35,6 +38,8 @@ async def test_start(conv):
     resposta_start = ("Olá, aluno digite sua matricula:")
     # Check that the message contains necessary text
     assert resposta_start in mensagem.text
+
+
 @pytest.mark.anyio
 async def test_matricula(conv):
     """Test matricula verification"""
@@ -42,6 +47,7 @@ async def test_matricula(conv):
     mensagem: Message = await conv.get_response()
     resposta_matricula = ("Bem vindo, Ana Beatriz matricula valida.")
     assert resposta_matricula in mensagem.text
+
 
 @pytest.mark.anyio
 async def test_conteudo(conv):
@@ -51,6 +57,7 @@ async def test_conteudo(conv):
     resposta_conteudo = ("Você terminou todos os conteudos.")
     assert resposta_conteudo in mensagem.text
 
+
 @pytest.mark.anyio
 async def test_contatos(conv):
     """Test /contato command"""
@@ -58,6 +65,7 @@ async def test_contatos(conv):
     mensagem: Message = await conv.get_response()
     resposta_contato = ("O contato do seu professor(a) : \n boto@gmail")
     assert resposta_contato in mensagem.text
+
 
 @pytest.mark.anyio
 async def test_plano(conv):
