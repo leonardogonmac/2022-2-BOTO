@@ -76,3 +76,4 @@ Recomendo não deixar para estudar o conteúdo muito em cima da entrega, se prep
 
 Vou deixar uma frase aqui, que queria muito ter ouvido no início do semestre. "Você consegue!!" Vai ser trabalhoso, você vai fixar estressado, mas no final, você vai conseguir. 
 - Tales Rodrigues Gonçalves	
+A disciplina de MDS teve muita importância para o desenvolvimento pessoal e profissional. A professora aborda em sala de aula vários temas cruciais para o desenvolvimento de software. O projeto permitiu que colocássemos esses conhecimentos em prática e desenvolvêssemos o trabalho em equipe. A matéria me ajudou muito a entender coisas que utilizo no meu estágio e a me aperfeiçoar como engenheiro de software.
