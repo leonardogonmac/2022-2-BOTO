@@ -45,8 +45,8 @@ Crie um banco de dados com as configurações que estão no arquivo docs/SQL_BOT
 #### Parte do Cadastro do Professor
 
 ```
-* Para conseguir utilizar o FrontEnd:
-``
+ Para conseguir utilizar o FrontEnd:
+
 - Tenha instalado na sua máquina o projeto que inclui o back-end e o front-end;
 - Baixe o node.js(https://nodejs.org/en/), selecione a opção 18.14.0 LTS;
 - No prompt de comando do seu PC, dê esse comando "npm install -g yarn", Para instalar o YARN.
