@@ -68,6 +68,7 @@ A disciplina é carregada, mas eu gostei de cursar ela com a professora Carla, s
 
 
 - Leonardo Gonçalves Machado
+
 Eu achei a matéria muito importante para aprender de fato como se trabalha em equipe para desenvolver um produto de software. A parte de planejamento e dividir o trabalho em sprints para serem feitas semanalmente ao longo do semestre vai ser muito útil em qualquer outra disciplina de trabalho em grupo. Um detalhe que eu acho que deixaria a matéria menos pesada é fazer algumas disciplinas que envolvem mais conhecimento técnico antes (além de Orientação a Objetos), especialmente Sistemas de Bancos de Dados (mesmo não sendo um pré-requisito). Gostei bastante da liberdade que os grupos tem em pensar os produtos, pois isso aumenta a possibilidade de soluções para as implementações, deixando o trabalho mais dinâmico.
 
 - Mylena Angélica Silva Farias	
