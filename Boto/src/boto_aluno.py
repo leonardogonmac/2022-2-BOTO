@@ -2,7 +2,7 @@ from telegram.ext import *
 import handlers_aluno
 
 def main():
-    TOKEN = "5971556610:AAFV3WHySq0gAFLGKDWW25-WHZnWyk2fGCs"
+    TOKEN = "6102243888:AAGIriVPfupuVBXRsUkWGKh5OuB2Lul1NTQ"
 
     dp = Application.builder().token(TOKEN).build()
 
@@ -12,6 +12,8 @@ def main():
     dp.add_handler(CommandHandler("contato", handlers_aluno.contato_professor))
 
     dp.add_handler(handlers_aluno.entrada_conversation)
+    dp.add_handler(handlers_aluno.calculadora_conversation)
+
 
     print("Bot started. . .\n")
     dp.run_polling()

@@ -5,6 +5,8 @@ from conexaoDataBase.cadastro_aluno import *
 from conexaoDataBase.enviar_info import *
 from conexaoDataBase.recebe_conteudo import *
 from conexaoDataBase.uteis import *
+from sympy import symbols, Eq, solve
+import math
 import logging
 
 # Enable logging
@@ -39,7 +41,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 Essa parte e para lidar com a entrada do aluno
 """
 
-ENTRADA, PROFESSOR = range(2)
+ENTRADA, PROFESSOR, CALCULADORA = range(3)
 
 
 async def start(update, context) -> int:
@@ -47,6 +49,31 @@ async def start(update, context) -> int:
 
     return ENTRADA
 
+async def calculadora(update, context) -> int:
+    await update.message.reply_text("Modo calculadora ativado! "
+                                    "\n Digite uma operação para eu calcular.")
+
+    return CALCULADORA
+
+async def calcula(update, context)  -> int:
+    operacao = update.message.text
+    resultado = 0
+    if 'x' in operacao:
+        resultado = await calcula_raizes(update, context)
+    elif 'sin' in operacao or 'cos' in operacao or 'tan' in operacao:
+        resultado = eval("math." + operacao)
+    else:
+        resultado = eval(operacao)
+
+    await update.message.reply_text(str(resultado))
+
+    return CALCULADORA
+
+async def calcula_raizes(update, context):
+    x = symbols('x')
+    funcao = update.message.text
+    equacao = Eq(eval(funcao.replace('^', '**')), 0)
+    return solve(equacao, x)
 
 async def alunoEntrada(update, context) -> int:
     try:
@@ -108,6 +135,14 @@ entrada_conversation = ConversationHandler(
     states={
         ENTRADA: [MessageHandler(filters.TEXT, alunoEntrada)],
         PROFESSOR: [MessageHandler(filters.TEXT, cadastro_matricula_professor)]
+    },
+    fallbacks=[CommandHandler("cancel", cancel)],
+)
+
+calculadora_conversation = ConversationHandler(
+    entry_points=[CommandHandler("calculadora", calculadora)],
+    states={
+        CALCULADORA: [MessageHandler(filters.TEXT, calcula)]
     },
     fallbacks=[CommandHandler("cancel", cancel)],
 )

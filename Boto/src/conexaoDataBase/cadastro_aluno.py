@@ -1,4 +1,6 @@
 from mysql.connector import *
+import sys
+sys.path.insert(1, "/home/leonardo/Documents/GitHub/2022-2-BOTO")
 from Boto.src.conexaoDataBase.databaseBOTO import nova_con
 
 
